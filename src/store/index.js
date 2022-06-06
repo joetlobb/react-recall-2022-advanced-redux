@@ -1,15 +1,17 @@
-import { configureStore, createSlice } from "@reactjs/toolkit";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {
+  cartItems: { title: "Test Item", quantity: 3, total: 18, price: 6 },
+};
 
-const slice = createSlice({
-  name: state,
+const cartsSlice = createSlice({
+  name: "carts",
   initialState,
-  reducers: {
-    add(state) {},
-  },
+  reducers: {},
 });
 
-const store = configureStore({ reducer: slice });
+const store = configureStore({
+  reducer: cartsSlice.reducer,
+});
 
 export default store;
