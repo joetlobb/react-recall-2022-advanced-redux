@@ -7,11 +7,21 @@ const initialState = {
 const cartsSlice = createSlice({
   name: "carts",
   initialState,
-  reducers: {},
+  reducers: {
+    increaseItemInCart(state) {
+      state.cartItems.quantity++;
+      state.cartItems.total = state.cartItems.total + state.cartItems.price;
+    },
+    decreaseItemInCart(state) {
+      state.cartItems.quantity--;
+      state.cartItems.total = state.cartItems.total - state.cartItems.price;
+    },
+  },
 });
 
 const store = configureStore({
   reducer: cartsSlice.reducer,
 });
 
+export const cartsActions = cartsSlice.actions;
 export default store;
