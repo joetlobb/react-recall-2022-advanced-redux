@@ -5,19 +5,23 @@ import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 
 const Cart = (props) => {
-  const items = useSelector((state) => state.cartItems.cartItems);
-
-  let itemsList = <div></div>;
-  if (items.length !== 0) {
-    itemsList = items.map((item) => <CartItem key={item.title} items={item} />);
-  }
-  console.log(items)
+  const cartItems = useSelector((state) => state.cart.items);
 
   return (
     <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>
       <p>No item in your cart, please add some!</p>
-      <ul>{itemsList}</ul>
+      <ul>
+        {cartItems.map((item) => (
+          <CartItem
+            key={item.id}
+            title={item.name}
+            quantity={item.quantity}
+            price={item.price}
+            total={item.totalPrice}
+          />
+        ))}
+      </ul>
     </Card>
   );
 };

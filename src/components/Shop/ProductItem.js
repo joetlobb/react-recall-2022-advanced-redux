@@ -1,29 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { cartsActions } from "../../store/index";
+import { cartActions } from "../../store/cart-slice";
 
 import Card from "../UI/Card";
 import classes from "./ProductItem.module.css";
 
 const ProductItem = (props) => {
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cartItems.cartItems);
-  const { title, price, description } = props;
+  const { title, price, description, id } = props;
 
   const addItemToCartHandler = () => {
-    if (cartItems.length !== 0) {
-      let titleList = [];
-      for (let i = 0; i < cartItems.length; i++) {
-        titleList.push(cartItems[i].title);
-      }
-      if (titleList.includes(title)) {
-        dispatch(cartsActions.increaseItemInCart(title));
-      } else {
-        dispatch(cartsActions.addItemToCart({ title, price }));
-      }
-    } else {
-      dispatch(cartsActions.addItemToCart({ title, price }));
-    }
+    dispatch(cartActions.addItemToCart({ id, price, title }));
   };
 
   return (

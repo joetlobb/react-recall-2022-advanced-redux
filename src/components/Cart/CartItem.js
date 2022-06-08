@@ -6,7 +6,7 @@ import classes from "./CartItem.module.css";
 
 const CartItem = (props) => {
   const dispatch = useDispatch();
-  const { title, quantity, total, price } = props.items;
+  const { title, quantity, total, price } = props;
 
   const addQuantityHandler = () => {
     dispatch(cartsActions.increaseItemInCart(title));
