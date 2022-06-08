@@ -8,7 +8,7 @@ const MainHeader = (props) => {
       <nav>
         <ul>
           <li>
-            <CartButton onShowCart={props.onShowCart} />
+            <CartButton />
           </li>
         </ul>
       </nav>

@@ -1,10 +1,10 @@
-import { Fragment } from 'react';
-import MainHeader from './MainHeader';
+import { Fragment } from "react";
+import MainHeader from "./MainHeader";
 
 const Layout = (props) => {
   return (
     <Fragment>
-      <MainHeader  onShowCart={props.onShowCart}  />
+      <MainHeader />
       <main>{props.children}</main>
     </Fragment>
   );

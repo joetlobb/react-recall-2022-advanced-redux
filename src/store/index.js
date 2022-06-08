@@ -4,7 +4,7 @@ const initialState = {
   cartItems: [{ title: "Test Item", quantity: 3, total: 18, price: 6 }],
 };
 
-const cartsSlice = createSlice({
+const cartItemsSlice = createSlice({
   name: "carts",
   initialState,
   reducers: {
@@ -40,9 +40,25 @@ const cartsSlice = createSlice({
   },
 });
 
-const store = configureStore({
-  reducer: cartsSlice.reducer,
+const initialCartState = { showCart: false };
+
+const cartStateSlice = createSlice({
+  name: "cartState",
+  initialState: initialCartState,
+  reducers: {
+    showCartToggle(state) {
+      state.showCart = !state.showCart;
+    },
+  },
 });
 
-export const cartsActions = cartsSlice.actions;
+const store = configureStore({
+  reducer: {
+    cartItems: cartItemsSlice.reducer,
+    cartState: cartStateSlice.reducer,
+  },
+});
+
+export const cartsActions = cartItemsSlice.actions;
+export const cartStateActions = cartStateSlice.actions;
 export default store;

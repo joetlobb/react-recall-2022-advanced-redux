@@ -7,7 +7,7 @@ import classes from "./ProductItem.module.css";
 
 const ProductItem = (props) => {
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cartItems);
+  const cartItems = useSelector((state) => state.cartItems.cartItems);
   const { title, price, description } = props;
 
   const addItemToCartHandler = () => {
